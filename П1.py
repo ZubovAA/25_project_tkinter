@@ -43,7 +43,7 @@ block.pack()
 
 # фрейм для цифр и основных математических операций
 numbers_frame = LabelFrame(block, text="Цифры")
-numbers_frame.grid(row=0, column=1)
+numbers_frame.grid(row=0, column=1, padx=5)
 
 # список для хранения цифр
 sp_numbers = [Button(numbers_frame, text=str(i), height=2, width=5) for i in
@@ -69,6 +69,15 @@ radians = Radiobutton(measurements, text="Радианы", variable=r_var, value
 degree.grid(row=0, column=0)
 radians.grid(row=0, column=1)
 
+# кнопки дополнительного блока
+sp_dopl = [Button(dopl_frame, text=i, height=2, width=5) for i in
+           ("sin", "ctg", "atg", "π", "e", "cos", "asin", "actg", "log2x", "ln", "tg", "acos", "x^y", "log10", "logxy")]
 
+# размещение кнопок на экране
+k = 0
+for row in range(1, 4):
+    for col in range(5):
+        sp_dopl[k].grid(row=row, column=col, pady=3)
+        k += 1
 
 root.mainloop()

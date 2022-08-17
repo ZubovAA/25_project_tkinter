@@ -55,5 +55,20 @@ for row in range(4):
         sp_numbers[k].grid(row=row, column=col)
         k += 1
 
+# дополнительный блок математических операций
+dopl_frame = LabelFrame(block, text="Дополнительные операции")
+dopl_frame.grid(row=0, column=0)
+
+measurements = Frame(dopl_frame)
+measurements.grid(row=0, column=0, columnspan=5)
+
+r_var = BooleanVar()
+r_var.set(True)
+degree = Radiobutton(measurements, text="Градусы", variable=r_var, value=True)
+radians = Radiobutton(measurements, text="Радианы", variable=r_var, value=False)
+degree.grid(row=0, column=0)
+radians.grid(row=0, column=1)
+
+
 
 root.mainloop()

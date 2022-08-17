@@ -37,4 +37,23 @@ but_MR.grid(row=0, column=5, padx=2)
 but_addM.grid(row=0, column=6, padx=2)
 but_munusM.grid(row=0, column=7, padx=2)
 
+# фрейм для размещения цифр и операций
+block = Frame(root)
+block.pack()
+
+# фрейм для цифр и основных математических операций
+numbers_frame = LabelFrame(block, text="Цифры")
+numbers_frame.grid(row=0, column=1)
+
+# список для хранения цифр
+sp_numbers = [Button(numbers_frame, text=str(i), height=2, width=5) for i in
+              ("7", "8", "9", "+", "√", "4", "5", "6", "-", "x^2", "1", "2", "3", "/", "%", ".", "0", "+/-", "*", "=")]
+# размещение кнопок на экране
+k = 0
+for row in range(4):
+    for col in range(5):
+        sp_numbers[k].grid(row=row, column=col)
+        k += 1
+
+
 root.mainloop()

@@ -2,6 +2,7 @@ from tkinter import *
 import math
 
 operand_left, operand_right = "0", "0"
+sign = ""
 memory_operand = "0"
 
 
@@ -30,6 +31,26 @@ def add_memory(event):
 def reduce_memory(event):
     global memory_operand
     memory_operand = str(int(memory_operand) - int(screen_text.get()))
+
+
+# функции для работы с очисткой
+def clear_c(event):
+    global operand_left, operand_right, sign
+    if sign == "":
+        operand_left = "0"
+    else:
+        operand_right = "0"
+
+
+def clear_ce(event):
+    global operand_left, operand_right, sign
+    operand_left, operand_right, sing = "0", "0", ""
+
+
+def backspace(event):
+    temp = screen_text.get()[:-1]
+    screen_text.delete(0, last=END)
+    screen_text.insert(0, temp)
 
 
 root = Tk()
@@ -117,5 +138,8 @@ but_MC.bind("<Button-1>", clear_memory)
 but_MR.bind("<Button-1>", read_memory)
 but_addM.bind("<Button-1>", add_memory)
 but_munusM.bind("<Button-1>", reduce_memory)
+but_C.bind("<Button-1>", clear_c)
+but_CE.bind("<Button-1>", clear_ce)
+but_clear.bind("<Button-1>", backspace)
 
 root.mainloop()

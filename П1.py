@@ -1,26 +1,34 @@
 from tkinter import *
 import math
 
+operand_left, operand_right = "0", "0"
+memory_operand = "0"
+
 
 # функции для работы с памятью
 def save_memory(event):
+    global memory_operand
     memory_operand = screen_text.get()
 
 
 def clear_memory(event):
+    global memory_operand
     memory_operand = ""
 
 
 def read_memory(event):
+    global memory_operand
     screen_text.delete(0, last=END)
     screen_text.insert(0, memory_operand)
 
 
 def add_memory(event):
+    global memory_operand
     memory_operand = str(int(memory_operand) + int(screen_text.get()))
 
 
 def reduce_memory(event):
+    global memory_operand
     memory_operand = str(int(memory_operand) - int(screen_text.get()))
 
 
@@ -104,7 +112,10 @@ for row in range(1, 4):
         sp_dopl[k].grid(row=row, column=col, pady=3)
         k += 1
 
-operand_left, operand_right = "0", "0"
-memory_operand = ""
+but_MS.bind("<Button-1>", save_memory)
+but_MC.bind("<Button-1>", clear_memory)
+but_MR.bind("<Button-1>", read_memory)
+but_addM.bind("<Button-1>", add_memory)
+but_munusM.bind("<Button-1>", reduce_memory)
 
 root.mainloop()

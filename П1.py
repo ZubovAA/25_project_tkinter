@@ -1,6 +1,29 @@
 from tkinter import *
 import math
 
+
+# функции для работы с памятью
+def save_memory(event):
+    memory_operand = screen_text.get()
+
+
+def clear_memory(event):
+    memory_operand = ""
+
+
+def read_memory(event):
+    screen_text.delete(0, last=END)
+    screen_text.insert(0, memory_operand)
+
+
+def add_memory(event):
+    memory_operand = str(int(memory_operand) + int(screen_text.get()))
+
+
+def reduce_memory(event):
+    memory_operand = str(int(memory_operand) - int(screen_text.get()))
+
+
 root = Tk()
 root.title("Научный калькулятор")
 root.geometry("500x300")
@@ -12,7 +35,8 @@ root.geometry("500x300")
 screen = LabelFrame(root, text="Экран")
 screen.pack()
 
-screen_text = Entry(screen, width=50, relief=GROOVE, font="Arial 16", justify=RIGHT, state=DISABLED)
+screen_text = Entry(screen, width=50, relief=GROOVE, font="Arial 16", justify=RIGHT)
+screen_text.insert(0, "0")
 screen_text.pack()
 
 # работа с памятью и очисткой
@@ -79,5 +103,8 @@ for row in range(1, 4):
     for col in range(5):
         sp_dopl[k].grid(row=row, column=col, pady=3)
         k += 1
+
+operand_left, operand_right = "0", "0"
+memory_operand = ""
 
 root.mainloop()

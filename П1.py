@@ -20,17 +20,19 @@ def clear_memory(event):
 def read_memory(event):
     global memory_operand
     screen_text.delete(0, last=END)
+    if memory_operand.split(".")[1] == "0":
+        memory_operand = memory_operand.split(".")[0]
     screen_text.insert(0, memory_operand)
 
 
 def add_memory(event):
     global memory_operand
-    memory_operand = str(int(memory_operand) + int(screen_text.get()))
+    memory_operand = str(float(memory_operand) + float(screen_text.get()))
 
 
 def reduce_memory(event):
     global memory_operand
-    memory_operand = str(int(memory_operand) - int(screen_text.get()))
+    memory_operand = str(float(memory_operand) - float(screen_text.get()))
 
 
 # функции для работы с очисткой

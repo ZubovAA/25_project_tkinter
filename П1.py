@@ -20,8 +20,9 @@ def clear_memory(event):
 def read_memory(event):
     global memory_operand
     screen_text.delete(0, last=END)
-    if memory_operand.split(".")[1] == "0":
-        memory_operand = memory_operand.split(".")[0]
+    if "." in memory_operand:
+        if memory_operand.split(".")[1] == "0":
+            memory_operand = memory_operand.split(".")[0]
     screen_text.insert(0, memory_operand)
 
 
@@ -60,14 +61,19 @@ def backspace(event):
 
 
 # функция отображения чисел на экране
-temp_screen = ""
-
-
 def screen_numbers(event, k):
-    global temp_screen
-    temp_screen += k
+    global operand_left, operand_right, sign
     screen_text.delete(0, last=END)
-    screen_text.insert(0, temp_screen)
+    if sign == "":
+        operand_left += k
+        if operand_left[0] == "0":
+            operand_left = operand_left[1:]
+        screen_text.insert(0, operand_left)
+    else:
+        operand_right += k
+        if operand_right[0] == "0":
+            operand_left = operand_right[1:]
+        screen_text.insert(0, operand_right)
 
 
 root = Tk()

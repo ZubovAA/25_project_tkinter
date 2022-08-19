@@ -14,15 +14,19 @@ def save_memory(event):
 
 def clear_memory(event):
     global memory_operand
-    memory_operand = ""
+    memory_operand = "0"
 
 
 def read_memory(event):
-    global memory_operand
+    global memory_operand, operand_right, operand_left, sign
     screen_text.delete(0, last=END)
     if "." in memory_operand:
         if memory_operand.split(".")[1] == "0":
             memory_operand = memory_operand.split(".")[0]
+    if sign == "":
+        operand_left = "0"
+    else:
+        operand_right = "0"
     screen_text.insert(0, memory_operand)
 
 

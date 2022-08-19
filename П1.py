@@ -55,24 +55,34 @@ def clear_ce(event):
 
 
 def backspace(event):
+    global operand_left, operand_right, sign
     temp = screen_text.get()[:-1]
-    screen_text.delete(0, last=END)
-    screen_text.insert(0, temp)
+    if len(temp) == 0:
+        temp = 0
+    if sign == "":
+        operand_left = temp
+        screen_text.delete(0, last=END)
+        screen_text.insert(0, operand_left)
+    else:
+        operand_right = temp
+        screen_text.delete(0, last=END)
+        screen_text.insert(0, operand_right)
 
 
 # функция отображения чисел на экране
 def screen_numbers(event, k):
     global operand_left, operand_right, sign
-    screen_text.delete(0, last=END)
     if sign == "":
         operand_left += k
         if operand_left[0] == "0":
             operand_left = operand_left[1:]
+        screen_text.delete(0, last=END)
         screen_text.insert(0, operand_left)
     else:
         operand_right += k
         if operand_right[0] == "0":
             operand_left = operand_right[1:]
+        screen_text.delete(0, last=END)
         screen_text.insert(0, operand_right)
 
 

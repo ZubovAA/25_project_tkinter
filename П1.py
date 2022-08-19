@@ -40,11 +40,15 @@ def clear_c(event):
         operand_left = "0"
     else:
         operand_right = "0"
+    screen_text.delete(0, last=END)
+    screen_text.insert(0, "0")
 
 
 def clear_ce(event):
     global operand_left, operand_right, sign
     operand_left, operand_right, sing = "0", "0", ""
+    screen_text.delete(0, last=END)
+    screen_text.insert(0, "0")
 
 
 def backspace(event):

@@ -90,6 +90,25 @@ def screen_numbers(event, k):
         screen_text.insert(0, operand_right)
 
 
+# функция для работы кнопки +/-
+def minus_plus(event):
+    global operand_left, operand_right, sign
+    if sign == "":
+        operand_left = str(float(operand_left) * (-1))
+        if "." in operand_left:
+            if operand_left.split(".")[1] == "0":
+                operand_left = operand_left.split(".")[0]
+        screen_text.delete(0, last=END)
+        screen_text.insert(0, operand_left)
+    else:
+        operand_right = str(float(operand_right) * (-1))
+        if "." in operand_right:
+            if operand_right.split(".")[1] == "0":
+                operand_right = operand_right.split(".")[0]
+        screen_text.delete(0, last=END)
+        screen_text.insert(0, operand_right)
+
+
 root = Tk()
 root.title("Научный калькулятор")
 root.geometry("500x300")
@@ -181,5 +200,7 @@ but_clear.bind("<Button-1>", backspace)
 
 for i in (0, 1, 2, 5, 6, 7, 10, 11, 12, 15, 16):
     sp_numbers[i].bind("<Button-1>", lambda e, k=sp_numbers[i]["text"]: screen_numbers(e, k))
+
+sp_numbers[17].bind("<Button-1>", minus_plus)
 
 root.mainloop()

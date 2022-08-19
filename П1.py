@@ -59,6 +59,17 @@ def backspace(event):
     screen_text.insert(0, temp)
 
 
+# функция отображения чисел на экране
+temp_screen = ""
+
+
+def screen_numbers(event, k):
+    global temp_screen
+    temp_screen += k
+    screen_text.delete(0, last=END)
+    screen_text.insert(0, temp_screen)
+
+
 root = Tk()
 root.title("Научный калькулятор")
 root.geometry("500x300")
@@ -147,5 +158,8 @@ but_munusM.bind("<Button-1>", reduce_memory)
 but_C.bind("<Button-1>", clear_c)
 but_CE.bind("<Button-1>", clear_ce)
 but_clear.bind("<Button-1>", backspace)
+
+for i in (0, 1, 2, 5, 6, 7, 10, 11, 12, 15, 16):
+    sp_numbers[i].bind("<Button-1>", lambda e, k=sp_numbers[i]["text"]: screen_numbers(e, k))
 
 root.mainloop()

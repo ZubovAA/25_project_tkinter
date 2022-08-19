@@ -48,7 +48,7 @@ def clear_c(event):
 
 def clear_ce(event):
     global operand_left, operand_right, sign
-    operand_left, operand_right, sing = "0", "0", ""
+    operand_left, operand_right, sign = "0", "0", ""
     screen_text.delete(0, last=END)
     screen_text.insert(0, "0")
 

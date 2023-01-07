@@ -12,7 +12,7 @@ def save_memory(event):
     memory_operand = screen_text.get()
 
 
-# фунция очистки памяти
+# функция очистки памяти
 def clear_memory(event):
     global memory_operand
     memory_operand = "0"

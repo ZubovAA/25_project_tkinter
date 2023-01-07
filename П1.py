@@ -12,11 +12,12 @@ def save_memory(event):
     memory_operand = screen_text.get()
 
 
+# фунция очистки памяти
 def clear_memory(event):
     global memory_operand
     memory_operand = "0"
 
-
+# функция чтения памяти
 def read_memory(event):
     global memory_operand, operand_right, operand_left, sign
     screen_text.delete(0, last=END)
@@ -30,6 +31,7 @@ def read_memory(event):
     screen_text.insert(0, memory_operand)
 
 
+# прибавление числа к числу в памяти
 def add_memory(event):
     global memory_operand
     memory_operand = str(float(memory_operand) + float(screen_text.get()))
